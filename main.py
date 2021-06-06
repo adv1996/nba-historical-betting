@@ -1,5 +1,5 @@
 from scrape_utils import retrieveWebpage
-from sportsreview_importer import retrieveLinks, bulkDownloadData
+from sportsreview_importer import retrieveLinks, bulkDownloadData, collateData
 
 def saveSportReviewWebpage():
   baseURL = 'https://www.sportsbookreviewsonline.com/scoresoddsarchives/nba/nbaoddsarchives.htm'
@@ -13,10 +13,19 @@ def retrieveSportsReviewLinks():
   saveFile = 'data/sportsbookreview_downloadable_archive_links.json'
   retrieveLinks(webpage, base, saveFile)
 
+def bulkDownloadAllDataFile():
+  saveFile = 'data/sportsbookreview_downloadable_archive_links.json'
+  bulkDownloadData(saveFile)
+
+def collateDownloadedData():
+  saveFile = 'data/sportsbookreview_downloadable_archive_links.json'
+  collateData(saveFile)
+
 def main():
   # saveSportReviewWebpage()
   # retrieveSportsReviewLinks()
-  saveFile = 'data/sportsbookreview_downloadable_archive_links.json'
-  bulkDownloadData(saveFile)
+  # bulkDownloadAllDataFile()
+  collateDownloadedData()
+
 if __name__ == "__main__":
   main()
